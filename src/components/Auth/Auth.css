@@ -1,0 +1,47 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 90%;
+}
+
+.ls-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    width: 250px;
+
+    border-radius: 5px;
+    box-shadow: 0 0 20px -3px rgba(0, 0, 0, 0.5);
+
+    padding: 3rem 1rem;
+    transform: scale(1.3);
+    margin-top: 10%;
+}
+
+.ls-form__header {
+    margin: 0;
+}
+
+.under_text {
+    font-size: .8rem;
+
+    margin: 0;
+}
+
+.ls-form__success-message {
+    font-size: .8rem;
+    color: green;
+    font-style: italic;
+    margin: 0;
+}
+
+.ls-form__error-message {
+    font-size: .8rem;
+    color: red;
+    font-style: italic;
+    margin: 0;
+}

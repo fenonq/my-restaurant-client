@@ -1,0 +1,14 @@
+.dishes_wrapper{
+    display: flex;
+    justify-content: center;
+
+    margin: 2rem 0;
+}
+
+.dishes{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    width: 70%;
+}

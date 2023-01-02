@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router';
+import Login from './components/Auth/Login';
+import { BrowserRouter } from 'react-router-dom';
+import Header from './components/layouts/Header/Header';
+import Signup from './components/Auth/Signup';
+import Menu from './components/Menu/Menu';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <div className="App">
+                <Routes>
+                    <Route path="/" element={<Header />}>
+                        {/*{localStorage.getItem('jwt-token') ? (*/}
+                        {/*    <Route path="/signup" element={<Signup />} />*/}
+                        {/*) : (*/}
+                        {/*    <Route path="/login" element={<Login />} />*/}
+                        {/*)}*/}
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/signup" element={<Signup />} />
+                        <Route path="/menu" element={<Menu />} />
+                    </Route>
+                </Routes>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;
