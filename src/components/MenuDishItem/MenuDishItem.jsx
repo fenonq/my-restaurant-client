@@ -1,10 +1,13 @@
 import React from 'react';
 import Button from '../ui/Button/Button';
 import './MenuDishItem.css';
-import {logout} from "../../functions/userRequests";
+import { addDishToCart } from '../../functions/userRequests';
 
 const MenuDishItem = ({ dish }) => {
-    console.log(dish);
+    const addDishToCartHandler = () => {
+        addDishToCart(dish.id);
+    };
+
     return (
         <div className="dish">
             <img className="dish_img" alt="123" />
@@ -12,7 +15,9 @@ const MenuDishItem = ({ dish }) => {
             <p className="dish_text dish_description">{dish.description}</p>
             <p className="dish_text dish_weight">{dish.weight}g</p>
             <p className="dish_text dish_price">{dish.price}$</p>
-            <Button type="submit" onClick={logout}>Add to cart</Button>
+            <Button type="submit" onClick={addDishToCartHandler}>
+                Add to cart
+            </Button>
         </div>
     );
 };

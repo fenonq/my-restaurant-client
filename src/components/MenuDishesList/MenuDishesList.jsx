@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getDishes } from '../../functions/dishRequest';
+import { getDishes } from '../../functions/dishRequests';
 import MenuDishItem from '../MenuDishItem/MenuDishItem';
 import './MenuDishesList.css';
-
-const getDishesLength = getDishes(0, 1000).then((res) => res.content.length);
 
 const MenuDishesList = ({ page, size, sort, pageNumChange }) => {
     const [dishes, setDishes] = useState([]);
@@ -13,6 +11,9 @@ const MenuDishesList = ({ page, size, sort, pageNumChange }) => {
         getDishes(page, size, sort).then((res) => {
             setDishes(res.content.map((el) => el));
             setIsLoading(false);
+            const getDishesLength = getDishes(0, 1000).then(
+                (res) => res.content.length
+            );
             getDishesLength.then((res) => pageNumChange(Math.ceil(res / size)));
         });
     }, [page, pageNumChange, size, sort]);
@@ -23,7 +24,9 @@ const MenuDishesList = ({ page, size, sort, pageNumChange }) => {
                 {isLoading ? (
                     <h1>Loading..</h1>
                 ) : (
-                    dishes.map((dish) => <MenuDishItem key={dish.id} dish={dish} />)
+                    dishes.map((dish) => (
+                        <MenuDishItem key={dish.id} dish={dish} />
+                    ))
                 )}
             </div>
         </div>

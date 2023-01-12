@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from './components/layouts/Header/Header';
 import Signup from './components/Auth/Signup';
 import Menu from './components/Menu/Menu';
+import Cart from "./components/Cart/Cart";
 
 function App() {
     return (
@@ -12,14 +13,10 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route path="/" element={<Header />}>
-                        {/*{localStorage.getItem('jwt-token') ? (*/}
-                        {/*    <Route path="/signup" element={<Signup />} />*/}
-                        {/*) : (*/}
-                        {/*    <Route path="/login" element={<Login />} />*/}
-                        {/*)}*/}
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/menu" element={<Menu />} />
+                        <Route path="/cart" element={<Cart />} />
                     </Route>
                 </Routes>
             </div>

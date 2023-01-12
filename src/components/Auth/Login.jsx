@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { login } from '../../functions/userRequests';
 import './Auth.css';
-import {NavLink, useNavigate} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Input from '../ui/Input/Input';
-import Button from "../ui/Button/Button";
+import Button from '../ui/Button/Button';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
+    // const navigate = useNavigate();
+    //
+    // useEffect(() => {
+    //     if (localStorage.getItem('user')) {
+    //         navigate('/menu');
+    //     }
+    // }, [navigate]);
 
     const usernameChangeHandler = (event) => {
         setUsername(event.target.value);
@@ -19,7 +26,6 @@ const Login = () => {
     };
 
     const submitHandler = (event) => {
-
         event.preventDefault();
         login({ username, password }).catch((error) =>
             setErrorMsg(error.response.data.error)
@@ -29,11 +35,6 @@ const Login = () => {
         setPassword('');
         setErrorMsg('');
     };
-
-    const navigate = useNavigate();
-    if (localStorage.getItem('jwt-token')) {
-        return navigate('/menu')
-    }
 
     return (
         <div className="wrapper">
