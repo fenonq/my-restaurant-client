@@ -14,7 +14,7 @@ const MenuDishItem = ({ dish }) => {
             <p className="dish_text dish_name">{dish.name}</p>
             <p className="dish_text dish_description">{dish.description}</p>
             <p className="dish_text dish_weight">{dish.weight}g</p>
-            <p className="dish_text dish_price">{dish.price}$</p>
+            <p className="dish_text dish_price">{dish.price}₴</p>
             <Button type="submit" onClick={addDishToCartHandler}>
                 Add to cart
             </Button>

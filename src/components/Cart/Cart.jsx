@@ -6,7 +6,6 @@ import CartOrder from '../CartOrder/CartOrder';
 import Button from '../ui/Button/Button';
 
 const Cart = () => {
-    console.log('rendered');
     const [forceRender, setForceRender] = useState(0);
     const [cart, setCart] = useState({});
     const [isEditing, setIsEditing] = useState(false);

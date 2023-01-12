@@ -1,0 +1,9 @@
+td {
+    text-align: center;
+}
+
+.receipts__dishes-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

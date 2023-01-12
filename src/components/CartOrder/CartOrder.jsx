@@ -53,7 +53,7 @@ const CartOrder = ({ stopEditing }) => {
                         />
                     </div>
                 </div>
-                <p>Total price: {totalPrice}</p>
+                <p>Total price: {totalPrice}₴</p>
                 <Button
                     type="submit"
                     className="order_button"

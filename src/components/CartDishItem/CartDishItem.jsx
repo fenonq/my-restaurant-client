@@ -35,8 +35,8 @@ const CartDishItem = ({ dish, value, setIsEditing, forceRenderObj }) => {
                 <img src="" alt="123" className="cart_dish_img" />
             </td>
             <td>{dish.name}</td>
-            <td>{dish.weight}</td>
-            <td>{dish.price}</td>
+            <td>{dish.weight}g</td>
+            <td>{dish.price}₴</td>
             <td>
                 <div className="dish_count">
                     <Button
