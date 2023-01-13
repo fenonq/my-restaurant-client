@@ -20,6 +20,7 @@ const CartOrder = ({ stopEditing }) => {
 
     const makeOrderHandler = () => {
         makeOrder();
+        // todo navigate
     }
 
     const onClickHandler = () => {

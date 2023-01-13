@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { getUserReceipts } from '../../functions/receiptRequests';
-import AccountReceiptItem from '../AccountReceiptItem/AccountReceiptItem';
-import './AccountReceiptsList.css';
+import { getAllReceipts } from '../../functions/receiptRequests';
+import OrderItem from '../OrderItem/OrderItem';
 
-const AccountReceiptsList = () => {
+const OrdersList = () => {
     const [receipts, setReceipts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [forceRender, setForceRender] = useState(0);
 
     useEffect(() => {
-        getUserReceipts().then((res) => setReceipts(res.map((el) => el)));
+        getAllReceipts().then((res) => setReceipts(res.map((el) => el)));
         setIsLoading(false);
-    }, []);
+    }, [forceRender]);
 
     return (
         <div className="table_wrapper">
@@ -20,18 +20,21 @@ const AccountReceiptsList = () => {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>№</th>
+                            <th>Customer</th>
+                            <th>Manager</th>
                             <th>Status</th>
-                            <th>Order Date</th>
+                            <th>Date</th>
                             <th>Dishes</th>
                             <th>Total price</th>
                         </tr>
                     </thead>
                     <tbody>
                         {receipts.map((receipt) => (
-                            <AccountReceiptItem
+                            <OrderItem
                                 receipt={receipt}
                                 key={receipt.id}
+                                forceObj={{ forceRender, setForceRender }}
                             />
                         ))}
                     </tbody>
@@ -41,4 +44,4 @@ const AccountReceiptsList = () => {
     );
 };
 
-export default AccountReceiptsList;
+export default OrdersList;

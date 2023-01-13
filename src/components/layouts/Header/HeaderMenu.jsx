@@ -23,6 +23,18 @@ const HeaderMenu = () => {
                 </li>
 
                 <li className="nav_item">
+                    <NavLink className="nav__link" to="/users">
+                        Users
+                    </NavLink>
+                </li>
+
+                <li className="nav_item">
+                    <NavLink className="nav__link" to="/orders">
+                        Orders
+                    </NavLink>
+                </li>
+
+                <li className="nav_item">
                     <NavLink className="nav__link" to="/account">
                         Account
                     </NavLink>

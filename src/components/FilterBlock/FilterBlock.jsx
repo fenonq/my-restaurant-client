@@ -1,5 +1,5 @@
-import { SIZE_KEYS, SORT_KEYS } from '../../utils/constants';
-import FilterSelect from '../FilterSelect/FilterSelect';
+import { SIZE_KEYS, SORT_KEYS_DISHES } from '../../utils/constants';
+import FilterSelect from '../ui/FilterSelect/FilterSelect';
 import './FilterBlock.css';
 
 const FilterBlock = ({ sizeChange, sortChange }) => {
@@ -21,7 +21,7 @@ const FilterBlock = ({ sizeChange, sortChange }) => {
             <FilterSelect
                 title="Sort by: "
                 onChange={sortChangeHandler}
-                keys={SORT_KEYS}
+                keys={SORT_KEYS_DISHES}
             />
         </div>
     );

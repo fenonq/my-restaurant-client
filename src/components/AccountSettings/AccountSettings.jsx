@@ -2,6 +2,7 @@ import React from 'react';
 import './AccountSettings.css';
 import {logout} from "../../functions/userRequests";
 import Button from "../ui/Button/Button";
+import {NavLink} from "react-router-dom";
 
 const AccountSettings = () => {
 
@@ -9,10 +10,12 @@ const AccountSettings = () => {
         logout();
     }
     return (
-            <div className="settings_links">
-                <Button onClick={logoutHandler} className="a_changepass">
-                    Logout
-                </Button>
+            <div className="settings_links a_logout-button">
+                <NavLink to="/login">
+                    <Button onClick={logoutHandler}>
+                        Logout
+                    </Button>
+                </NavLink>
                 {/*<a th:href="@{/dishes}" className="a_changepass" th:text="#{account.settings.redactor.dish}"*/}
                 {/*   th:style="${currentUser.roles.iterator().next().toString() != 'ADMIN'} ? 'display: none'">*/}
                 {/*    Dish redactor*/}

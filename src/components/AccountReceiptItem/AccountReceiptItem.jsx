@@ -1,16 +1,9 @@
 import React from 'react';
 import './AccountReceiptItem.css';
+import {convertArrayToMap} from "../../functions/convertArrayToMap";
 
 const AccountReceiptItem = ({ receipt }) => {
-    const dishes = receipt.dishes.reduce((acc, el) => {
-        if (acc.hasOwnProperty(JSON.stringify(el))) {
-            acc[JSON.stringify(el)] += 1;
-        } else {
-            acc[JSON.stringify(el)] = 1;
-        }
-        return acc;
-    }, {});
-
+    const dishes = convertArrayToMap(receipt.dishes);
     const date = new Date(receipt.createDate);
 
     return (

@@ -5,5 +5,8 @@
     gap: 1rem;
     font-size: 1.2rem;
     margin: 35px;
-    width: 15%;
+}
+
+.a_logout-button {
+    width: 4.1%;
 }
