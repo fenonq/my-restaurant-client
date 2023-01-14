@@ -109,3 +109,43 @@ export const removeDishFromCart = (id) => {
             return response.data;
         });
 };
+
+export const getAllUsers = () => {
+    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    return axios
+        .get(
+            `http://localhost:8080/api/v1/users`,
+            {
+                headers: {
+                    Authorization: token,
+                },
+            }
+        )
+        .then((response) => response.data);
+};
+
+export const changeUserRole = (userId, roleId) => {
+    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    return axios
+        .patch(`http://localhost:8080/api/v1/users/${userId}/change-role/${roleId}`, {}, {
+            headers: {
+                Authorization: token,
+            },
+        })
+        .then((response) => {
+            return response.data;
+        });
+};
+
+export const banOrUnbanUser = (id) => {
+    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    return axios
+        .patch(`http://localhost:8080/api/v1/users/ban/${id}`, {}, {
+            headers: {
+                Authorization: token,
+            },
+        })
+        .then((response) => {
+            return response.data;
+        });
+};

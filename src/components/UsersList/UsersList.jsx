@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { getAllReceipts } from '../../functions/receiptRequests';
+import React, {useEffect, useState} from 'react';
+import './UsersList.css';
 import OrderItem from '../OrderItem/OrderItem';
-import './OrdersList.css';
+import {getAllUsers} from "../../functions/userRequests";
+import UserItem from "../UserItem/UserItem";
 
-const OrdersList = () => {
-    const [receipts, setReceipts] = useState([]);
+const UsersList = () => {
+    const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [forceRender, setForceRender] = useState(0);
 
     useEffect(() => {
-        getAllReceipts().then((res) => setReceipts(res.map((el) => el)));
+        getAllUsers().then((res) => setUsers(res.map((el) => el)));
         setIsLoading(false);
     }, [forceRender]);
 
@@ -22,19 +23,17 @@ const OrdersList = () => {
                     <thead>
                         <tr>
                             <th>№</th>
-                            <th>Customer</th>
-                            <th>Manager</th>
-                            <th>Status</th>
-                            <th>Date</th>
-                            <th>Dishes</th>
-                            <th>Total price</th>
+                            <th>Username</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Role</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {receipts.map((receipt) => (
-                            <OrderItem
-                                receipt={receipt}
-                                key={receipt.id}
+                        {users.map((user) => (
+                            <UserItem
+                                user={user}
+                                key={user.id}
                                 forceObj={{ forceRender, setForceRender }}
                             />
                         ))}
@@ -45,4 +44,4 @@ const OrdersList = () => {
     );
 };
 
-export default OrdersList;
+export default UsersList;
