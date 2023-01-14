@@ -1,0 +1,12 @@
+.table {
+    border-spacing: 2rem;
+    margin: 0 auto;
+}
+
+.table_title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+

@@ -1,14 +1,6 @@
 import React from 'react';
-import {
-    cancelOrRenewReceipt,
-    changeReceiptStatus,
-} from '../../functions/receiptRequests';
 import Button from '../ui/Button/Button';
-import {
-    banOrUnbanUser,
-    banUser,
-    changeUserRole,
-} from '../../functions/userRequests';
+import { banOrUnbanUser, changeUserRole } from '../../functions/userRequests';
 
 const UserItem = ({ user, forceObj }) => {
     const { forceRender, setForceRender } = forceObj;

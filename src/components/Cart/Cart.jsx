@@ -34,12 +34,10 @@ const Cart = () => {
                 forceRenderObj={{ forceRender, setForceRender }}
             />
             <div className="strip"></div>
-            {!isEditing && <Button onClick={startEditingHandler}>Order</Button>}
-
-            {isEditing && (
-                <CartOrder
-                    stopEditing={stopEditingHandler}
-                />
+            {isEditing ? (
+                <CartOrder stopEditing={stopEditingHandler} />
+            ) : (
+                <Button onClick={startEditingHandler}>Order</Button>
             )}
         </div>
     );

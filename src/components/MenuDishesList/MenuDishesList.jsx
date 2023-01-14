@@ -9,7 +9,7 @@ const MenuDishesList = ({ page, size, sort, pageNumChange }) => {
 
     useEffect(() => {
         getDishes(page, size, sort).then((res) => {
-            setDishes(res.content.map((el) => el));
+            setDishes(res.content.filter((el) => el.visible));
             setIsLoading(false);
             const getDishesLength = getDishes(0, 1000).then(
                 (res) => res.content.length
