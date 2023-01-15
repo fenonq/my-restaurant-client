@@ -3,10 +3,10 @@ import './DishesList.css';
 import { getDishes } from '../../functions/dishRequests';
 import DishItem from '../DishItem/DishItem';
 
-const DishesList = () => {
+const DishesList = ({ forceObj }) => {
     const [dishes, setDishes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [forceRender, setForceRender] = useState(0);
+    const { forceRender, setForceRender } = forceObj;
 
     useEffect(() => {
         getDishes(0, 1000).then((res) => setDishes(res.content));

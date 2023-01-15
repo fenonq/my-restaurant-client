@@ -26,3 +26,31 @@ export const changeDishVisibility = (id) => {
             return response.data;
         });
 };
+
+export const createDish = (dishData) => {
+    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    console.log(dishData);
+    return axios
+        .post('http://localhost:8080/api/v1/dishes', dishData, {
+            headers: {
+                Authorization: token,
+            },
+        })
+        .then((response) => {
+            return response.data;
+        });
+};
+
+export const updateDish = (dishData) => {
+    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    console.log(dishData);
+    return axios
+        .put(`http://localhost:8080/api/v1/dishes/${dishData.id}`, dishData, {
+            headers: {
+                Authorization: token,
+            },
+        })
+        .then((response) => {
+            return response.data;
+        });
+};

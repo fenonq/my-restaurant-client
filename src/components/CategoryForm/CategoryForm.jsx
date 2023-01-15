@@ -5,21 +5,21 @@ import { useForm } from 'react-hook-form';
 const CategoryForm = ({ title, setActive, forceObj, action, category }) => {
     const { register, handleSubmit } = useForm();
     const { forceRender, setForceRender } = forceObj;
-    const [categoryName, setCategoryName] = useState(category?.name.toString());
+    const [name, setName] = useState(category ? category.name : '');
 
     const categoryNameChangeHandler = (event) => {
-        setCategoryName(event.target.value);
+        setName(event.target.value);
     };
 
-    const submitHandler = (categoryName) => {
-        !category ? action(categoryName) : action(category.id, categoryName);
+    const submitHandler = (name) => {
+        action({ id: category?.id, name });
         setTimeout(() => {
             setForceRender(forceRender + 1);
         }, 50);
 
         setActive(false);
         if (!category) {
-            setCategoryName('');
+            setName('');
         }
     };
 
@@ -29,17 +29,16 @@ const CategoryForm = ({ title, setActive, forceObj, action, category }) => {
             <form onSubmit={handleSubmit((data) => submitHandler(data.name))}>
                 <div className="category-form__inputs">
                     <input
-                        {...register('name')}
+                        {...register('name', { required: true })}
                         placeholder="Category name"
                         className="ls-form__input"
                         onChange={categoryNameChangeHandler}
-                        value={categoryName}
+                        value={name}
                         autoComplete="off"
                     />
                     <input
-                        disabled={!categoryName}
                         type="submit"
-                        value="New"
+                        value="Submit"
                         className="submit__button"
                     />
                 </div>

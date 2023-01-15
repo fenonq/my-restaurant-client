@@ -1,9 +1,12 @@
-import React from 'react';
-import { changeDishVisibility } from '../../functions/dishRequests';
+import React, { useState } from 'react';
+import { changeDishVisibility, updateDish } from '../../functions/dishRequests';
 import Button from '../ui/Button/Button';
+import Modal from '../ui/Modal/Modal';
+import DishForm from '../DishForm/DishForm';
 
 const DishItem = ({ dish, forceObj }) => {
     const { forceRender, setForceRender } = forceObj;
+    const [active, setActive] = useState(false);
 
     const changeVisibilityHandler = () => {
         changeDishVisibility(dish.id);
@@ -27,7 +30,16 @@ const DishItem = ({ dish, forceObj }) => {
                 </Button>
             </td>
             <td>
-                <Button>Edit</Button>
+                <Button onClick={() => setActive(true)}>Edit</Button>
+                <Modal activeObj={{ active, setActive }}>
+                    <DishForm
+                        title="Edit Dish"
+                        forceObj={{ forceRender, setForceRender }}
+                        setActive={setActive}
+                        action={updateDish}
+                        dish={dish}
+                    />
+                </Modal>
             </td>
         </tr>
     );
