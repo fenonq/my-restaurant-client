@@ -18,6 +18,7 @@ const AccountSettings = () => {
                     </NavLink>
                 </div>
                 <NavLink to="/dishes">Dish redactor</NavLink>
+                <NavLink to="/categories">Category redactor</NavLink>
             </div>
         </div>
     );

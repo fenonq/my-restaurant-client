@@ -3,7 +3,7 @@ import './DishForm.css';
 import Button from '../ui/Button/Button';
 import Input from '../ui/Input/Input';
 
-const DishForm = () => {
+const DishForm = ({ stopEditing }) => {
     // todo зробити фетчі
     return (
         <div className="dish_form">
@@ -11,7 +11,7 @@ const DishForm = () => {
             <Input />
             <Input />
             <Input />
-            <Button>New</Button>
+            <Button onClick={stopEditing}>New</Button>
         </div>
     );
 };

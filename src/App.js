@@ -10,6 +10,7 @@ import Account from "./components/Account/Account";
 import Orders from "./components/Orders/Orders";
 import Users from "./components/Users/Users";
 import Dishes from "./components/Dishes/Dishes";
+import Categories from "./components/Categories/Categories";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                         <Route path="/orders" element={<Orders />} />
                         <Route path="/users" element={<Users />} />
                         <Route path="/dishes" element={<Dishes />} />
+                        <Route path="/categories" element={<Categories />} />
                     </Route>
                 </Routes>
             </div>

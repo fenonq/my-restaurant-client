@@ -27,9 +27,7 @@ const DishItem = ({ dish, forceObj }) => {
                 </Button>
             </td>
             <td>
-                <Button>
-                    Edit
-                </Button>
+                <Button>Edit</Button>
             </td>
         </tr>
     );

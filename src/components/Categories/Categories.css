@@ -1,0 +1,14 @@
+.table_title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.setting-categories__wrapper {
+    width: 80%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
