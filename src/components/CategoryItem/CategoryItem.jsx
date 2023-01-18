@@ -13,10 +13,9 @@ const CategoryItem = ({ category, forceObj }) => {
     const [active, setActive] = useState(false);
 
     const changeVisibilityHandler = () => {
-        changeCategoryVisibility(category.id);
-        setTimeout(() => {
-            setForceRender(forceRender + 1);
-        }, 50);
+        changeCategoryVisibility(category.id).then(() =>
+            setForceRender(forceRender + 1)
+        );
     };
 
     return (

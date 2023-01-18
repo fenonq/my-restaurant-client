@@ -1,21 +1,4 @@
 import axios from 'axios';
-import jwt_decode from 'jwt-decode';
-
-// export const sendLoginRequestHandler = async (userData) => {
-//     console.log(userData);
-//     const rawResponse = await fetch(
-//         'http://localhost:8080/api/v1/users/login',
-//         {
-//             method: 'POST',
-//             headers: {
-//                 Accept: 'application/json',
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(userData),
-//         }
-//     );
-//     return await rawResponse.json();
-// };
 
 export const login = (userData) => {
     return axios
@@ -26,10 +9,10 @@ export const login = (userData) => {
                     'jwt-token',
                     JSON.stringify(response.data.accessToken)
                 );
-                const username = jwt_decode(
-                    JSON.parse(localStorage.getItem('jwt-token'))
-                ).sub;
-                getUserByUsername(username);
+                // const username = jwt_decode(
+                //     JSON.parse(localStorage.getItem('jwt-token'))
+                // ).sub;
+                // getUserByUsername(username);
             }
             return response.data;
         });
@@ -48,28 +31,28 @@ export const signup = (userData) => {
                     'jwt-token',
                     JSON.stringify(response.data.accessToken)
                 );
-                const username = jwt_decode(
-                    JSON.parse(localStorage.getItem('jwt-token'))
-                ).sub;
-                getUserByUsername(username);
+                // const username = jwt_decode(
+                //     JSON.parse(localStorage.getItem('jwt-token'))
+                // ).sub;
+                // getUserByUsername(username);
             }
             return response.data;
         });
 };
 
-export const getUserByUsername = (username) => {
-    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
-    return axios
-        .get(`http://localhost:8080/api/v1/users/${username}`, {
-            headers: {
-                Authorization: token,
-            },
-        })
-        .then((response) => {
-            localStorage.setItem('user', JSON.stringify(response.data));
-            return response.data;
-        });
-};
+// export const getUserByUsername = (username) => {
+//     const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+//     return axios
+//         .get(`http://localhost:8080/api/v1/users/${username}`, {
+//             headers: {
+//                 Authorization: token,
+//             },
+//         })
+//         .then((response) => {
+//             localStorage.setItem('user', JSON.stringify(response.data));
+//             return response.data;
+//         });
+// };
 
 export const getUserCart = () => {
     const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));

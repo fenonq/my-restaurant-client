@@ -7,17 +7,13 @@ const UserItem = ({ user, forceObj }) => {
 
     const changeUserRoleHandler = () => {
         const roleId = 3 - user.roles[0].id;
-        changeUserRole(user.id, roleId);
-        setTimeout(() => {
-            setForceRender(forceRender + 1);
-        }, 50);
+        changeUserRole(user.id, roleId).then(() =>
+            setForceRender(forceRender + 1)
+        );
     };
 
     const banOrUnbanUserHandler = () => {
-        banOrUnbanUser(user.id);
-        setTimeout(() => {
-            setForceRender(forceRender + 1);
-        }, 50);
+        banOrUnbanUser(user.id).then(() => setForceRender(forceRender + 1));
     };
 
     return (

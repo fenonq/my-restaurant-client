@@ -2,7 +2,7 @@ import React from 'react';
 import CartDishItem from '../CartDishItem/CartDishItem';
 import './CartDishesList.css';
 
-const CartDishesList = ({ cart, setIsEditing, forceRenderObj }) => {
+const CartDishesList = ({ cart, forceRenderObj }) => {
     return (
         <>
             <p className="table_title">Your cart</p>
@@ -24,7 +24,6 @@ const CartDishesList = ({ cart, setIsEditing, forceRenderObj }) => {
                             return (
                                 <CartDishItem
                                     forceRenderObj={forceRenderObj}
-                                    setIsEditing={setIsEditing}
                                     dish={key}
                                     value={value}
                                     key={key.id}

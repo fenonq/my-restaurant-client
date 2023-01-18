@@ -5,12 +5,12 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from './components/layouts/Header/Header';
 import Signup from './components/Auth/Signup';
 import Menu from './components/Menu/Menu';
-import Cart from "./components/Cart/Cart";
-import Account from "./components/Account/Account";
-import Orders from "./components/Orders/Orders";
-import Users from "./components/Users/Users";
-import Dishes from "./components/Dishes/Dishes";
-import Categories from "./components/Categories/Categories";
+import Cart from './components/Cart/Cart';
+import Account from './components/Account/Account';
+import Orders from './components/Orders/Orders';
+import Users from './components/Users/Users';
+import Dishes from './components/Dishes/Dishes';
+import Categories from './components/Categories/Categories';
 
 function App() {
     return (

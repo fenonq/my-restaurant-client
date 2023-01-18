@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './Cart.css';
 import { getUserCart } from '../../functions/userRequests';
 import CartDishesList from '../CartDishesList/CartDishesList';
-import CartOrder from '../CartOrder/CartOrder';
 import Button from '../ui/Button/Button';
+import {makeOrder} from "../../functions/receiptRequests";
+import {useNavigate} from "react-router-dom";
 
 const Cart = () => {
     const [forceRender, setForceRender] = useState(0);
     const [cart, setCart] = useState({});
-    const [isEditing, setIsEditing] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getUserCart().then((res) => setCart(res));
@@ -18,27 +19,34 @@ const Cart = () => {
         return <p className="cart_empty">Cart is empty!</p>;
     }
 
-    const startEditingHandler = () => {
-        setIsEditing(true);
-    };
+    const makeOrderHandler = () => {
+        makeOrder().then(() => navigate('/account'));
+    }
 
-    const stopEditingHandler = () => {
-        setIsEditing(false);
-    };
+    let totalPrice = 0;
+    Object.entries(cart).forEach(([key, value]) => {
+        key = JSON.parse(key);
+        totalPrice += key.price * value;
+    });
 
     return (
         <div className="cart_wrapper">
             <CartDishesList
                 cart={cart}
-                setIsEditing={setIsEditing}
                 forceRenderObj={{ forceRender, setForceRender }}
             />
             <div className="strip"></div>
-            {isEditing ? (
-                <CartOrder stopEditing={stopEditingHandler} />
-            ) : (
-                <Button onClick={startEditingHandler}>Order</Button>
-            )}
+            <div className="order_wrapper">
+                <p>Total price: {totalPrice}₴</p>
+                <Button
+                    type="submit"
+                    className="order_button"
+                    disabled={!totalPrice}
+                    onClick={makeOrderHandler}
+                >
+                    Order
+                </Button>
+            </div>
         </div>
     );
 };

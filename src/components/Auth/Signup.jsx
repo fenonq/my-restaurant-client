@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import Input from '../ui/Input/Input';
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { signup } from '../../functions/userRequests';
 import './Auth.css';
-import Button from '../ui/Button/Button';
+import { useForm } from 'react-hook-form';
 
 const Signup = () => {
+    const { register, handleSubmit } = useForm();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
+    const navigate = useNavigate();
+
+    if (localStorage.getItem('jwt-token')) {
+        return <Navigate to="/account" />;
+    }
 
     const firstNameChangeHandler = (event) => {
         setFirstName(event.target.value);
@@ -28,15 +33,16 @@ const Signup = () => {
         setPassword(event.target.value);
     };
 
-    const submitHandler = (event) => {
-        event.preventDefault();
-        signup({ firstName, lastName, username, password }).catch((error) => {
-            let message = '';
-            for (const data of error.response.data) {
-                message += data.message + '\t';
-            }
-            return setErrorMsg(message);
-        });
+    const submitHandler = () => {
+        signup({ firstName, lastName, username, password })
+            .then(() => navigate('/menu'))
+            .catch((error) => {
+                let message = '';
+                for (const data of error.response.data) {
+                    message += data.message + '\t';
+                }
+                return setErrorMsg(message);
+            });
 
         setFirstName('');
         setLastName('');
@@ -47,47 +53,57 @@ const Signup = () => {
 
     return (
         <div className="wrapper">
-            <form method="post" className="ls-form">
+            <form
+                onSubmit={handleSubmit(() => submitHandler())}
+                className="ls-form"
+            >
                 <h1 className="ls-form__header">Signup</h1>
-                <Input
-                    value={firstName}
+                <input
+                    {...register('firstName', { required: true })}
+                    placeholder="firstname"
+                    className="ls-form__input"
                     onChange={firstNameChangeHandler}
-                    placeholder="name"
-                    type="text"
+                    value={firstName}
+                    autoComplete="off"
                 />
-                <Input
-                    value={lastName}
+                <input
+                    {...register('lastName', { required: true })}
+                    placeholder="lastname"
+                    className="ls-form__input"
                     onChange={lastNameChangeHandler}
-                    placeholder="surname"
-                    type="text"
+                    value={lastName}
+                    autoComplete="off"
                 />
-                <Input
-                    value={username}
-                    onChange={usernameChangeHandler}
+                <input
+                    {...register('username', { required: true })}
                     placeholder="username"
-                    type="text"
+                    className="ls-form__input"
+                    onChange={usernameChangeHandler}
+                    value={username}
+                    autoComplete="off"
                 />
-                <Input
-                    value={password}
-                    onChange={passwordChangeHandler}
+                <input
+                    {...register('password', { required: true })}
                     placeholder="password"
+                    className="ls-form__input"
+                    onChange={passwordChangeHandler}
+                    value={password}
+                    autoComplete="off"
                     type="password"
                 />
-
-                <Button onClick={submitHandler}>Submit</Button>
-
+                <input
+                    type="submit"
+                    value="Submit"
+                    className="submit__button"
+                />
                 <p className="under_text">
                     <NavLink className="click-reference" to="/login">
                         Already have an account? Log In!
                     </NavLink>
                 </p>
-
                 {errorMsg && (
                     <p className="ls-form__error-message">{errorMsg}</p>
                 )}
-
-                {/*<p th:if="${param.error ne null}" style="font-size: .8rem; color: red; font-style: italic; margin: 0"*/}
-                {/*   th:text="#{signup.message.error}">Error</p>*/}
             </form>
         </div>
     );

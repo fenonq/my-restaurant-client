@@ -2,7 +2,10 @@ import React from 'react';
 import './OrderItem.css';
 import { convertArrayToMap } from '../../functions/convertArrayToMap';
 import Button from '../ui/Button/Button';
-import {cancelOrRenewReceipt, changeReceiptStatus} from '../../functions/receiptRequests';
+import {
+    cancelOrRenewReceipt,
+    changeReceiptStatus,
+} from '../../functions/receiptRequests';
 
 const OrderItem = ({ receipt, forceObj }) => {
     const { forceRender, setForceRender } = forceObj;
@@ -10,17 +13,15 @@ const OrderItem = ({ receipt, forceObj }) => {
     const date = new Date(receipt.createDate);
 
     const changeReceiptStatusHandler = () => {
-        changeReceiptStatus(receipt.id);
-        setTimeout(() => {
-            setForceRender(forceRender + 1);
-        }, 50);
+        changeReceiptStatus(receipt.id).then(() =>
+            setForceRender(forceRender + 1)
+        );
     };
 
     const cancelOrRenewReceiptHandler = () => {
-        cancelOrRenewReceipt(receipt.id);
-        setTimeout(() => {
-            setForceRender(forceRender + 1);
-        }, 50);
+        cancelOrRenewReceipt(receipt.id).then(() =>
+            setForceRender(forceRender + 1)
+        );
     };
 
     return (
@@ -55,9 +56,7 @@ const OrderItem = ({ receipt, forceObj }) => {
             <td>{receipt.totalPrice}₴</td>
             {receipt.status.name === 'Canceled' ? (
                 <td>
-                    <Button onClick={cancelOrRenewReceiptHandler}>
-                        Renew
-                    </Button>
+                    <Button onClick={cancelOrRenewReceiptHandler}>Renew</Button>
                 </td>
             ) : (
                 <td>

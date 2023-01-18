@@ -9,10 +9,9 @@ const DishItem = ({ dish, forceObj }) => {
     const [active, setActive] = useState(false);
 
     const changeVisibilityHandler = () => {
-        changeDishVisibility(dish.id);
-        setTimeout(() => {
-            setForceRender(forceRender + 1);
-        }, 50);
+        changeDishVisibility(dish.id).then(() =>
+            setForceRender(forceRender + 1)
+        );
     };
 
     return (

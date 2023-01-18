@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './CartDishItem.css';
 import Button from '../ui/Button/Button';
 import {
@@ -6,26 +6,18 @@ import {
     removeDishFromCart,
 } from '../../functions/userRequests';
 
-const CartDishItem = ({ dish, value, setIsEditing, forceRenderObj }) => {
-    const [count, setCount] = useState(value);
-    const {forceRender, setForceRender} = forceRenderObj;
+const CartDishItem = ({ dish, value, forceRenderObj }) => {
+    const { forceRender, setForceRender } = forceRenderObj;
 
     const addDishToCartHandler = () => {
-        setCount(count + 1);
-        addDishToCart(dish.id);
+        addDishToCart(dish.id).then(() => setForceRender(forceRender + 1));
     };
 
     const removeDishFromCartHandler = () => {
-        setCount(count - 1);
-        removeDishFromCart(dish.id);
-        setForceRender(forceRender + 1);
+        removeDishFromCart(dish.id).then(() => setForceRender(forceRender + 1));
     };
 
-    const setIsEditingHandler = () => {
-        setIsEditing(false);
-    };
-
-    if (count === 0) {
+    if (value === 0) {
         return <></>;
     }
 
@@ -39,23 +31,11 @@ const CartDishItem = ({ dish, value, setIsEditing, forceRenderObj }) => {
             <td>{dish.price}₴</td>
             <td>
                 <div className="dish_count">
-                    <Button
-                        type="submit"
-                        onClick={() => {
-                            removeDishFromCartHandler();
-                            setIsEditingHandler();
-                        }}
-                    >
+                    <Button type="submit" onClick={removeDishFromCartHandler}>
                         –
                     </Button>
-                    <p>{count}</p>
-                    <Button
-                        type="submit"
-                        onClick={() => {
-                            addDishToCartHandler();
-                            setIsEditingHandler();
-                        }}
-                    >
+                    <p>{value}</p>
+                    <Button type="submit" onClick={addDishToCartHandler}>
                         +
                     </Button>
                 </div>

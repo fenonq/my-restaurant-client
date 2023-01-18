@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './UsersList.css';
-import OrderItem from '../OrderItem/OrderItem';
-import {getAllUsers} from "../../functions/userRequests";
-import UserItem from "../UserItem/UserItem";
+import { getAllUsers } from '../../functions/userRequests';
+import UserItem from '../UserItem/UserItem';
 
 const UsersList = () => {
     const [users, setUsers] = useState([]);

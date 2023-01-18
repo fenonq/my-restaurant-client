@@ -39,7 +39,7 @@ const DishForm = ({ title, setActive, forceObj, action, dish }) => {
         setPrice(event.target.value);
     };
 
-    const submitHandler = (name) => {
+    const submitHandler = () => {
         action({
             id: dish?.id,
             name,
@@ -47,10 +47,7 @@ const DishForm = ({ title, setActive, forceObj, action, dish }) => {
             category,
             weight,
             price,
-        });
-        setTimeout(() => {
-            setForceRender(forceRender + 1);
-        }, 50);
+        }).then(() => setForceRender(forceRender + 1));
 
         setActive(false);
         if (!dish) {
@@ -64,7 +61,7 @@ const DishForm = ({ title, setActive, forceObj, action, dish }) => {
     return (
         <div className="dish-form__wrapper">
             <h1>{title}</h1>
-            <form onSubmit={handleSubmit((data) => submitHandler(data.name))}>
+            <form onSubmit={handleSubmit((data) => submitHandler())}>
                 <div className="dish-form__inputs">
                     <input
                         {...register('name', { required: true })}

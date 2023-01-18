@@ -4,9 +4,11 @@ import {getUserCart} from '../../functions/userRequests';
 import './CartOrder.css';
 import Input from "../ui/Input/Input";
 import {makeOrder} from "../../functions/receiptRequests";
+import {useNavigate} from "react-router-dom";
 
 const CartOrder = ({ stopEditing }) => {
     const [cart, setCart] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         getUserCart().then((res) => setCart(res));
@@ -19,8 +21,7 @@ const CartOrder = ({ stopEditing }) => {
     });
 
     const makeOrderHandler = () => {
-        makeOrder();
-        // todo navigate
+        makeOrder().then(() => navigate('/account'));
     }
 
     const onClickHandler = () => {

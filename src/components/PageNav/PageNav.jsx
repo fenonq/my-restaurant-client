@@ -5,11 +5,6 @@ import './PageNav.css';
 const PageNav = ({ pageNum, pageChange }) => {
     return (
         <nav className="bottom_nav">
-            {/*{pages.map((el) => (*/}
-            {/*    <ul className="nav_list" onClick={pageChange} key={el}>*/}
-            {/*        {el + 1}*/}
-            {/*    </ul>*/}
-            {/*))}*/}
             <ReactPaginate
                 className="nav_list"
                 nextLabel="next >"

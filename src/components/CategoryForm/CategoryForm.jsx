@@ -12,10 +12,9 @@ const CategoryForm = ({ title, setActive, forceObj, action, category }) => {
     };
 
     const submitHandler = (name) => {
-        action({ id: category?.id, name });
-        setTimeout(() => {
-            setForceRender(forceRender + 1);
-        }, 50);
+        action({ id: category?.id, name }).then(() =>
+            setForceRender(forceRender + 1)
+        );
 
         setActive(false);
         if (!category) {
