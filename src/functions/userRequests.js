@@ -9,10 +9,6 @@ export const login = (userData) => {
                     'jwt-token',
                     JSON.stringify(response.data.accessToken)
                 );
-                // const username = jwt_decode(
-                //     JSON.parse(localStorage.getItem('jwt-token'))
-                // ).sub;
-                // getUserByUsername(username);
             }
             return response.data;
         });
@@ -31,28 +27,10 @@ export const signup = (userData) => {
                     'jwt-token',
                     JSON.stringify(response.data.accessToken)
                 );
-                // const username = jwt_decode(
-                //     JSON.parse(localStorage.getItem('jwt-token'))
-                // ).sub;
-                // getUserByUsername(username);
             }
             return response.data;
         });
 };
-
-// export const getUserByUsername = (username) => {
-//     const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
-//     return axios
-//         .get(`http://localhost:8080/api/v1/users/${username}`, {
-//             headers: {
-//                 Authorization: token,
-//             },
-//         })
-//         .then((response) => {
-//             localStorage.setItem('user', JSON.stringify(response.data));
-//             return response.data;
-//         });
-// };
 
 export const getUserCart = () => {
     const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));

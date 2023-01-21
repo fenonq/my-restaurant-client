@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { signup } from '../../functions/userRequests';
 import './Auth.css';
 import { useForm } from 'react-hook-form';
@@ -12,10 +12,6 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     const navigate = useNavigate();
-
-    if (localStorage.getItem('jwt-token')) {
-        return <Navigate to="/account" />;
-    }
 
     const firstNameChangeHandler = (event) => {
         setFirstName(event.target.value);

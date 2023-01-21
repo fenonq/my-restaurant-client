@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { login } from '../../functions/userRequests';
 import './Auth.css';
-import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
@@ -10,10 +10,6 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     const navigate = useNavigate();
-
-    if (localStorage.getItem('jwt-token')) {
-        return <Navigate to="/account" />;
-    }
 
     const usernameChangeHandler = (event) => {
         setUsername(event.target.value);

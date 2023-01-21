@@ -11,7 +11,7 @@ const DishForm = ({ title, setActive, forceObj, action, dish }) => {
     const [description, setDescription] = useState(
         dish ? dish.description : ''
     );
-    const [category, setCategory] = useState(dish ? dish.category : {});
+    const [category, setCategory] = useState(dish ? dish.category : '');
     const [weight, setWeight] = useState(dish ? dish.weight : '');
     const [price, setPrice] = useState(dish ? dish.price : '');
 
@@ -44,7 +44,7 @@ const DishForm = ({ title, setActive, forceObj, action, dish }) => {
             id: dish?.id,
             name,
             description,
-            category,
+            category: category ? category : categories[0],
             weight,
             price,
         }).then(() => setForceRender(forceRender + 1));
@@ -61,7 +61,7 @@ const DishForm = ({ title, setActive, forceObj, action, dish }) => {
     return (
         <div className="dish-form__wrapper">
             <h1>{title}</h1>
-            <form onSubmit={handleSubmit((data) => submitHandler())}>
+            <form onSubmit={handleSubmit(() => submitHandler())}>
                 <div className="dish-form__inputs">
                     <input
                         {...register('name', { required: true })}
@@ -80,7 +80,7 @@ const DishForm = ({ title, setActive, forceObj, action, dish }) => {
                         autoComplete="off"
                     />
                     <select
-                        {...register('category', { required: true })}
+                        {...register('category')}
                         onChange={dishCategoryChangeHandler}
                         value={category.name}
                     >
