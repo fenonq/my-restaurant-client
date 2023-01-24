@@ -21,7 +21,11 @@ const CategoryItem = ({ category, forceObj }) => {
     return (
         <tr>
             <td>{category.id}</td>
-            <td>image</td>
+            <td><img
+                className="cart_dish_img"
+                alt={`category-${category.id}`}
+                src={require(`../../static/img/category-${category.id}.png`)}
+            /></td>
             <td>{category.name}</td>
             <td>
                 <Button onClick={changeVisibilityHandler}>

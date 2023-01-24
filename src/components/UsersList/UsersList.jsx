@@ -9,7 +9,7 @@ const UsersList = () => {
     const [forceRender, setForceRender] = useState(0);
 
     useEffect(() => {
-        getAllUsers().then((res) => setUsers(res.map((el) => el)));
+        getAllUsers().then((res) => setUsers([...res]));
         setIsLoading(false);
     }, [forceRender]);
 

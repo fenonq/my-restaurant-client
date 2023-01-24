@@ -1,0 +1,8 @@
+.welcome_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    font-size: 2rem;
+    margin-top: 15%;
+}

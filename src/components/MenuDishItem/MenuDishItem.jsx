@@ -10,7 +10,11 @@ const MenuDishItem = ({ dish }) => {
 
     return (
         <div className="dish">
-            <img className="dish_img" alt="123" />
+            <img
+                className="dish_img"
+                alt={`dish-${dish.id}`}
+                src={require(`../../static/img/dish-${dish.id}.png`)}
+            />
             <p className="dish_text dish_name">{dish.name}</p>
             <p className="dish_text dish_description">{dish.description}</p>
             <p className="dish_text dish_weight">{dish.weight}g</p>

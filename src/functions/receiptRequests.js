@@ -1,67 +1,75 @@
-import axios from "axios";
+import axios from 'axios';
+import { API_RECEIPTS } from '../utils/constants';
+import {getToken} from "./authUtils";
 
 export const makeOrder = () => {
-    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    const token = getToken();
     return axios
-        .post(`http://localhost:8080/api/v1/receipts`, {}, {
-            headers: {
-                Authorization: token,
-            },
-        })
+        .post(
+            API_RECEIPTS,
+            {},
+            {
+                headers: {
+                    Authorization: token,
+                },
+            }
+        )
         .then((response) => {
             return response.data;
         });
 };
 
 export const getUserReceipts = () => {
-    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    const token = getToken();
     return axios
-        .get(
-            `http://localhost:8080/api/v1/receipts/user`,
-            {
-                headers: {
-                    Authorization: token,
-                },
-            }
-        )
+        .get(`${API_RECEIPTS}/user`, {
+            headers: {
+                Authorization: token,
+            },
+        })
         .then((response) => response.data);
 };
 
 export const getAllReceipts = () => {
-    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    const token = getToken();
     return axios
-        .get(
-            `http://localhost:8080/api/v1/receipts`,
-            {
-                headers: {
-                    Authorization: token,
-                },
-            }
-        )
+        .get(API_RECEIPTS, {
+            headers: {
+                Authorization: token,
+            },
+        })
         .then((response) => response.data);
 };
 
 export const changeReceiptStatus = (id) => {
-    const token = JSON.parse(localStorage.getItem('jwt-token'));
+    const token = getToken();
     return axios
-        .patch(`http://localhost:8080/api/v1/receipts/next-status/${id}`, {}, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
+        .patch(
+            `${API_RECEIPTS}/next-status/${id}`,
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
         .then((response) => {
             return response.data;
         });
 };
 
 export const cancelOrRenewReceipt = (id) => {
-    const token = JSON.parse(localStorage.getItem('jwt-token'));
+    const token = getToken();
     return axios
-        .patch(`http://localhost:8080/api/v1/receipts/cancel/${id}`, {}, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
+        .patch(
+            `${API_RECEIPTS}/cancel/${id}`,
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
         .then((response) => {
             return response.data;
         });

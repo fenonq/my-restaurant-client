@@ -3,3 +3,7 @@
     gap: 5px;
     align-items: center;
 }
+
+.cart_dish_img {
+    height: 40px;
+}

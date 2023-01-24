@@ -1,6 +1,6 @@
 import React from 'react';
 import './AccountReceiptItem.css';
-import {convertArrayToMap} from "../../functions/convertArrayToMap";
+import { convertArrayToMap } from '../../functions/convertArrayToMap';
 
 const AccountReceiptItem = ({ receipt }) => {
     const dishes = convertArrayToMap(receipt.dishes);
@@ -9,7 +9,11 @@ const AccountReceiptItem = ({ receipt }) => {
     return (
         <tr>
             <td>
-                <img src="" alt="123" className="cart_dish_img" />
+                <img
+                    className="cart_dish_img"
+                    alt={`status-${receipt.status.id}`}
+                    src={require(`../../static/img/status-${receipt.status.id}.png`)}
+                />
             </td>
             <td>{receipt.status.name}</td>
             <td>

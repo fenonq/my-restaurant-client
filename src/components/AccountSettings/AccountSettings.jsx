@@ -1,9 +1,9 @@
 import React from 'react';
 import './AccountSettings.css';
-import { logout } from '../../functions/userRequests';
 import Button from '../ui/Button/Button';
 import { NavLink } from 'react-router-dom';
 import { getRoles } from '../../functions/authUtils';
+import { logout } from '../../functions/authRequests';
 
 const AccountSettings = () => {
     const roles = getRoles();
@@ -20,10 +20,10 @@ const AccountSettings = () => {
                     </NavLink>
                 </div>
                 {roles.ROLE_ADMIN && (
-                    <NavLink to="/dishes">Dish redactor</NavLink>
-                )}
-                {roles.ROLE_ADMIN && (
-                    <NavLink to="/categories">Category redactor</NavLink>
+                    <>
+                        <NavLink to="/dishes">Dish redactor</NavLink>
+                        <NavLink to="/categories">Category redactor</NavLink>
+                    </>
                 )}
             </div>
         </div>

@@ -24,7 +24,11 @@ const CartDishItem = ({ dish, value, forceRenderObj }) => {
     return (
         <tr>
             <td>
-                <img src="" alt="123" className="cart_dish_img" />
+                <img
+                    className="cart_dish_img"
+                    alt={`dish-${dish.id}`}
+                    src={require(`../../static/img/dish-${dish.id}.png`)}
+                />
             </td>
             <td>{dish.name}</td>
             <td>{dish.weight}g</td>

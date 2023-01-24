@@ -3,6 +3,7 @@ import { changeDishVisibility, updateDish } from '../../functions/dishRequests';
 import Button from '../ui/Button/Button';
 import Modal from '../ui/Modal/Modal';
 import DishForm from '../DishForm/DishForm';
+import './DishItem.css';
 
 const DishItem = ({ dish, forceObj }) => {
     const { forceRender, setForceRender } = forceObj;
@@ -17,7 +18,13 @@ const DishItem = ({ dish, forceObj }) => {
     return (
         <tr>
             <td>{dish.id}</td>
-            <td>image</td>
+            <td>
+                <img
+                    className="cart_dish_img"
+                    alt={`dish-${dish.id}`}
+                    src={require(`../../static/img/dish-${dish.id}.png`)}
+                />
+            </td>
             <td>{dish.name}</td>
             <td>{dish.description}</td>
             <td>{dish.category.name}</td>

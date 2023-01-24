@@ -1,9 +1,11 @@
 import axios from 'axios';
+import {API_CATEGORIES} from "../utils/constants";
+import {getToken} from "./authUtils";
 
 export const getAllCategories = () => {
-    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    const token = getToken();
     return axios
-        .get(`http://localhost:8080/api/v1/categories`, {
+        .get(API_CATEGORIES, {
             headers: {
                 Authorization: token,
             },
@@ -12,10 +14,10 @@ export const getAllCategories = () => {
 };
 
 export const changeCategoryVisibility = (id) => {
-    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    const token = getToken();
     return axios
         .patch(
-            `http://localhost:8080/api/v1/categories/visibility/${id}`,
+            `${API_CATEGORIES}/visibility/${id}`,
             {},
             {
                 headers: {
@@ -29,9 +31,9 @@ export const changeCategoryVisibility = (id) => {
 };
 
 export const createCategory = (categoryData) => {
-    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    const token = getToken();
     return axios
-        .post('http://localhost:8080/api/v1/categories', categoryData, {
+        .post(API_CATEGORIES, categoryData, {
             headers: {
                 Authorization: token,
             },
@@ -42,10 +44,10 @@ export const createCategory = (categoryData) => {
 };
 
 export const updateCategory = (categoryData) => {
-    const token = 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+    const token = getToken();
     return axios
         .put(
-            `http://localhost:8080/api/v1/categories/${categoryData.id}`,
+            `${API_CATEGORIES}/${categoryData.id}`,
             categoryData,
             {
                 headers: {

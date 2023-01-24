@@ -9,7 +9,7 @@ const DishesList = ({ forceObj }) => {
     const { forceRender, setForceRender } = forceObj;
 
     useEffect(() => {
-        getDishes(0, 1000).then((res) => setDishes(res.content));
+        getDishes(0, 1000).then((res) => setDishes([...res.content]));
         setIsLoading(false);
     }, [forceRender]);
 

@@ -9,7 +9,7 @@ const OrdersList = () => {
     const [forceRender, setForceRender] = useState(0);
 
     useEffect(() => {
-        getAllReceipts().then((res) => setReceipts(res.map((el) => el)));
+        getAllReceipts().then((res) => setReceipts([...res]));
         setIsLoading(false);
     }, [forceRender]);
 

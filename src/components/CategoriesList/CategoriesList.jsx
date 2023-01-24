@@ -9,7 +9,7 @@ const CategoriesList = ({ forceObj }) => {
     const { forceRender, setForceRender } = forceObj;
 
     useEffect(() => {
-        getAllCategories().then((res) => setCategories(res));
+        getAllCategories().then((res) => setCategories([...res]));
         setIsLoading(false);
     }, [forceRender]);
 

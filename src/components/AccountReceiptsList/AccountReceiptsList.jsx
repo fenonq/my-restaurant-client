@@ -8,7 +8,7 @@ const AccountReceiptsList = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getUserReceipts().then((res) => setReceipts(res.map((el) => el)));
+        getUserReceipts().then((res) => setReceipts([...res]));
         setIsLoading(false);
     }, []);
 

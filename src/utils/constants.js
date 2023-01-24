@@ -1,5 +1,10 @@
 export const SORT_KEYS_DISHES = ['name', 'description', 'weight', 'price'];
-export const SIZE_KEYS = [1, 2, 4, 8, 12];
+export const SIZE_KEYS = [4, 8, 12];
 export const ROLE_USER = 'ROLE_USER';
 export const ROLE_MANAGER = 'ROLE_MANAGER';
 export const ROLE_ADMIN = 'ROLE_ADMIN';
+export const API_AUTHENTICATION = 'http://localhost:8080/api/v1/authentication';
+export const API_USERS = 'http://localhost:8080/api/v1/users';
+export const API_DISHES = 'http://localhost:8080/api/v1/dishes';
+export const API_CATEGORIES = 'http://localhost:8080/api/v1/categories';
+export const API_RECEIPTS = 'http://localhost:8080/api/v1/receipts';

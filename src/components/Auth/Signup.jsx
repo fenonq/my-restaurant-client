@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { signup } from '../../functions/userRequests';
 import './Auth.css';
 import { useForm } from 'react-hook-form';
+import {signup} from "../../functions/authRequests";
 
 const Signup = () => {
     const { register, handleSubmit } = useForm();

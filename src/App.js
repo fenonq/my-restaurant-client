@@ -11,10 +11,11 @@ import Orders from './components/Orders/Orders';
 import Users from './components/Users/Users';
 import Dishes from './components/Dishes/Dishes';
 import Categories from './components/Categories/Categories';
-import ProtectedRoutes from "./components/ProtectedRoutes";
-import AccessRoute from "./components/AccessRoute";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
+import AccessRoute from "./routes/AccessRoute";
 import {ROLE_ADMIN, ROLE_MANAGER, ROLE_USER} from "./utils/constants";
-import AuthRoute from "./components/AuthRoute";
+import AuthRoute from "./routes/AuthRoute";
+import Welcome from "./components/Welcome/Welcome";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/signup" element={<AuthRoute to={<Signup />} />} />
                     <Route path="/" element={<ProtectedRoutes />}>
                         <Route path="/" element={<Header />}>
+                            <Route path="/" element={<Welcome />} />
                             <Route path="/menu" element={<Menu />} />
                             <Route path="/account" element={<Account/>} />
                             <Route path="/cart"

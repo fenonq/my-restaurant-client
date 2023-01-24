@@ -14,6 +14,10 @@ export const getRoles = () => {
     return null;
 };
 
+export const getToken = () => {
+    return 'Bearer ' + JSON.parse(localStorage.getItem('jwt-token'));
+};
+
 export const useAuth = () => {
     return !!localStorage.getItem('jwt-token');
 };

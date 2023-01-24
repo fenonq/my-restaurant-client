@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { login } from '../../functions/userRequests';
 import './Auth.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import {login} from "../../functions/authRequests";
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
@@ -21,7 +21,7 @@ const Login = () => {
 
     const submitHandler = () => {
         login({ username, password })
-            .then(() => navigate('/menu'))
+            .then(() => navigate('/'))
             .catch((error) => setErrorMsg(error.response.data.message));
 
         setUsername('');
