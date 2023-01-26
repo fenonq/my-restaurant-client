@@ -12,7 +12,7 @@ const AccountReceiptItem = ({ receipt }) => {
                 <img
                     className="cart_dish_img"
                     alt={`status-${receipt.status.id}`}
-                    src={require(`../../static/img/status-${receipt.status.id}.png`)}
+                    src={`./img/status-${receipt.status.id}.png`}
                 />
             </td>
             <td>{receipt.status.name}</td>

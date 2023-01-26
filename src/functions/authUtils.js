@@ -3,14 +3,13 @@ import { ROLE_ADMIN, ROLE_MANAGER, ROLE_USER } from '../utils/constants';
 
 export const getRoles = () => {
     if (localStorage.getItem('jwt-token')) {
-        const jwt = jwt_decode(localStorage.getItem('jwt-token'));
+        const decodedJwt = jwt_decode(localStorage.getItem('jwt-token'));
         return {
-            ROLE_USER: jwt.roles[0] === ROLE_USER,
-            ROLE_MANAGER: jwt.roles[0] === ROLE_MANAGER,
-            ROLE_ADMIN: jwt.roles[0] === ROLE_ADMIN,
+            ROLE_USER: decodedJwt.roles[0] === ROLE_USER,
+            ROLE_MANAGER: decodedJwt.roles[0] === ROLE_MANAGER,
+            ROLE_ADMIN: decodedJwt.roles[0] === ROLE_ADMIN,
         };
     }
-
     return null;
 };
 

@@ -2,10 +2,21 @@ import axios from 'axios';
 import { API_DISHES } from '../utils/constants';
 import {getToken} from "./authUtils";
 
-export const getDishes = (page = 0, size = 4, sort = 'name') => {
+export const getPageableDishes = (page = 0, size = 4, sort = 'name') => {
     const token = getToken();
     return axios
-        .get(`${API_DISHES}?page=${page}&size=${size}&sort=${sort}`, {
+        .get(`${API_DISHES}/pageable?page=${page}&size=${size}&sort=${sort}`, {
+            headers: {
+                Authorization: token,
+            },
+        })
+        .then((response) => response.data);
+};
+
+export const getDishes = () => {
+    const token = getToken();
+    return axios
+        .get(`${API_DISHES}`, {
             headers: {
                 Authorization: token,
             },

@@ -11,11 +11,12 @@ import Orders from './components/Orders/Orders';
 import Users from './components/Users/Users';
 import Dishes from './components/Dishes/Dishes';
 import Categories from './components/Categories/Categories';
-import ProtectedRoutes from "./routes/ProtectedRoutes";
-import AccessRoute from "./routes/AccessRoute";
+import ProtectedRoutes from "./access/ProtectedRoutes";
+import AccessRoute from "./access/AccessRoute";
 import {ROLE_ADMIN, ROLE_MANAGER, ROLE_USER} from "./utils/constants";
-import AuthRoute from "./routes/AuthRoute";
+import AuthRoute from "./access/AuthRoute";
 import Welcome from "./components/Welcome/Welcome";
+import AuthVerify from "./access/AuthVerify";
 
 function App() {
     return (
@@ -52,6 +53,7 @@ function App() {
                         </Route>
                     </Route>
                 </Routes>
+                <AuthVerify />
             </div>
         </BrowserRouter>
     );

@@ -24,7 +24,7 @@ const CategoryItem = ({ category, forceObj }) => {
             <td><img
                 className="cart_dish_img"
                 alt={`category-${category.id}`}
-                src={require(`../../static/img/category-${category.id}.png`)}
+                src={`./img/category-${category.id}.png`}
             /></td>
             <td>{category.name}</td>
             <td>

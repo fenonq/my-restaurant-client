@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './DishesList.css';
-import { getDishes } from '../../functions/dishRequests';
+import {getDishes} from '../../functions/dishRequests';
 import DishItem from '../DishItem/DishItem';
 
 const DishesList = ({ forceObj }) => {
@@ -9,7 +9,7 @@ const DishesList = ({ forceObj }) => {
     const { forceRender, setForceRender } = forceObj;
 
     useEffect(() => {
-        getDishes(0, 1000).then((res) => setDishes([...res.content]));
+        getDishes().then((res) => setDishes([...res]));
         setIsLoading(false);
     }, [forceRender]);
 

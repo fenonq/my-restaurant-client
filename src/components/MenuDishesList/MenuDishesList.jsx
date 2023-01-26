@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getDishes } from '../../functions/dishRequests';
+import { getPageableDishes } from '../../functions/dishRequests';
 import MenuDishItem from '../MenuDishItem/MenuDishItem';
 import './MenuDishesList.css';
 
@@ -8,15 +8,16 @@ const MenuDishesList = ({ page, size, sort, pageNumChange }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getDishes(page, size, sort).then((res) => {
+        getPageableDishes(page, size, sort).then((res) => {
             setDishes(res.content.filter((el) => el.visible));
             setIsLoading(false);
-            const getDishesLength = getDishes(0, 1000).then(
+            const getDishesLength = getPageableDishes(0, 1000).then(
                 (res) => res.content.length
             );
             getDishesLength.then((res) => pageNumChange(Math.ceil(res / size)));
         });
     }, [page, pageNumChange, size, sort]);
+    console.log(dishes);
 
     return (
         <div className="dishes_wrapper">
