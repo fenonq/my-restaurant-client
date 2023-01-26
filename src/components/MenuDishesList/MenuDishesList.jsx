@@ -17,7 +17,6 @@ const MenuDishesList = ({ page, size, sort, pageNumChange }) => {
             getDishesLength.then((res) => pageNumChange(Math.ceil(res / size)));
         });
     }, [page, pageNumChange, size, sort]);
-    console.log(dishes);
 
     return (
         <div className="dishes_wrapper">
