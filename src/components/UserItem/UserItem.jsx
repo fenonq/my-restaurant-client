@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../ui/Button/Button';
 import { banOrUnbanUser, changeUserRole } from '../../functions/userRequests';
+import { ROLE_ADMIN } from '../../utils/constants';
 
 const UserItem = ({ user, forceObj }) => {
     const { forceRender, setForceRender } = forceObj;
@@ -22,7 +23,7 @@ const UserItem = ({ user, forceObj }) => {
             <td>{user.username}</td>
             <td>{user.firstName}</td>
             <td>{user.lastName}</td>
-            {user.roles[0].name === 'ROLE_ADMIN' ? (
+            {user.roles[0].name === ROLE_ADMIN ? (
                 <td>admin</td>
             ) : (
                 <td>
@@ -32,9 +33,11 @@ const UserItem = ({ user, forceObj }) => {
                 </td>
             )}
             <td>
-                <Button onClick={banOrUnbanUserHandler}>
-                    {user.active ? 'Ban' : 'Unban'}
-                </Button>
+                {user.roles[0].name !== ROLE_ADMIN && (
+                    <Button onClick={banOrUnbanUserHandler}>
+                        {user.active ? 'Ban' : 'Unban'}
+                    </Button>
+                )}
             </td>
         </tr>
     );
