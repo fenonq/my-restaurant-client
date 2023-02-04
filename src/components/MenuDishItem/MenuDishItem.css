@@ -40,3 +40,8 @@
 .dish_price{
     font-weight: 600;
 }
+
+.added_tick {
+    font-size: 2rem;
+    color: #31344E;
+}
