@@ -18,7 +18,7 @@ const Dishes = () => {
             <Button onClick={() => setActive(true)}>New</Button>
             <Modal activeObj={{ active, setActive }}>
                 <DishForm
-                    title="New Category"
+                    title="New Dish"
                     forceObj={{ forceRender, setForceRender }}
                     action={createDish}
                     setActive={setActive}
